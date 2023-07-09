@@ -11,7 +11,7 @@ struct details{
 void reservation(void);
 void view(void);
 void cancel(void);
-void printTicket(char[], int, int, float*);
+void printTicket(char[], int, int, float);
 void bookedTrain(void);
 float calculateCharge(int, int);
 
@@ -167,7 +167,7 @@ void specificTrain(int train_num)
     }
 }
 
-void printTicket(char name[], int trainNum, int seats, float* charge){
+void printTicket(char name[], int trainNum, int seats, float charge){
     system("cls");
     printf("---------------------------------------\n");
     printf("\t\tTICKET\n");
@@ -176,7 +176,7 @@ void printTicket(char name[], int trainNum, int seats, float* charge){
     printf("No. of seats:\t\t%d\n", seats);
     printf("Train number:\t\t%d\n", trainNum);
     specificTrain(trainNum);
-    printf("Charge:\t\t\t%.2f\n", *charge);
+    printf("Charge:\t\t\t%.2f\n", charge);
 }
 
 void reservation(){
@@ -200,7 +200,7 @@ void reservation(){
         return;
     }
     float charge = calculateCharge(passenger.trainNum, passenger.seats);
-    printTicket(passenger.name, passenger.trainNum, passenger.seats, &charge);
+    printTicket(passenger.name, passenger.trainNum, passenger.seats, charge);
 
     printf("\nCONFIRM your ticket(y/n): ");
     while(1){
